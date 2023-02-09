@@ -1,6 +1,6 @@
 # Assignment 7
 
-![Assignment 7](https://github.com/PGE383-HPC/assignment7-solution/actions/workflows/main.yml/badge.svg)
+![Assignment 7](https://github.com/PGE383-HPC/assignment7/actions/workflows/main.yml/badge.svg)
 
 This purpose of this assignment is to setup your own personal `dotfiles`
 repository such that your own settings and customizations can be used across
