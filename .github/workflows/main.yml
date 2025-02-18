@@ -20,7 +20,7 @@ jobs:
           --header 'Accept: application/vnd.github.v3.raw' \
           -O --location "https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}-solution/contents/environment.yml"
       - name: "Install environment"
-        uses: mamba-org/provision-with-micromamba@main
+        uses: mamba-org/setup-micromamba@v2
         with:
           environment-file: environment.yml
       - name: "Fetch tests" 
@@ -42,3 +42,10 @@ jobs:
           source ~/.bash_profile
           alias lla > lla.txt
           python -m unittest test.py -vvv
+      - name: "Reset profile" 
+        shell: bash -l {0}
+        run: |
+          mv $HOME/.bash_profile_backup $HOME/.bash_profile 
+          mv $HOME/.bashrc_backup $HOME/.bashrc
+          source $HOME/.bash_profile
+          source $HOME/.bashrc
