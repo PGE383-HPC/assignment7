@@ -1,6 +1,6 @@
-#/usr/bin/env python
+#!/usr/bin/env julia
 #
-# Copyright 2020-2021 John T. Foster
+# Copyright 2020-2026 John T. Foster
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,21 +13,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import unittest
+using Test
 
-class TestSolution(unittest.TestCase):
+@testset "TestSolution" begin
+    root_path = dirname(@__FILE__) * "/../"
     
-    def test_lla(self):
-
-        with open('lla.txt', 'r') as f:
-
-            first_line = f.readline()
-            split_line = first_line.rstrip().split()
-
-            assert split_line[0] == 'alias'
-            assert split_line[1] == "lla='ls"
-            assert split_line[2] == "-la'"
-
-
-if __name__ == '__main__':
-    unittest.main()
+    @testset "test_lla" begin
+        first_line = readline(joinpath(root_path, "lla.txt"))
+        split_line = split(strip(first_line))
+        
+        @test split_line[1] == "alias"
+        @test split_line[2] == "lla='ls"
+        @test split_line[3] == "-la'"
+    end
+end

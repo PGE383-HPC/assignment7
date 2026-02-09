@@ -131,3 +131,6 @@ dmypy.json
 # No changes to workflows
 .github
 .gitignore
+
+id_ed25519_assignment7
+id_ed25519_assignment7.pub
